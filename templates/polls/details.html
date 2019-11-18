@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <small>Question:</small>
+    <p style="margin-top:0;">{{question.question_text}}</p>
+    <small>Choices:</small>
+
+    {% if error_message %}
+    <div style="color:red;">{{error_message}}</div>
+    {% endif %}
+
+    {% if question.choice_set.all %}
+    <form action="{% url 'polls:vote' question.id %}" method="post">
+            {% csrf_token %}
+            {% for choice in question.choice_set.all %}
+            <div>
+                <input type="radio" name="choice" id="choice{{forloop.counter}}" value="{{choice.id}}">
+                <label for="choice{{forloop.counter}}">{{ choice.choice_text }}</label>
+            </div>
+            {% endfor %}
+        <input type="submit" value="vote">
+    </form>
+    {% else %}
+    <p>There is no choice.</p>
+    {% endif %}
+
+<a style="margin-top:15px;display:block;" href="{% url 'polls:list' %}">Go back to questions list</a>
+{% endblock %}
