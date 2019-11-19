@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-19 10:56+0100\n"
+"POT-Creation-Date: 2019-11-19 15:29+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +18,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: .\books\apps.py:7
+msgid "book"
+msgstr ""
+
+#: .\books\apps.py:8
+msgid "books"
+msgstr ""
+
+#: .\mysite\settings.py:125
+msgid "Polish"
+msgstr ""
+
+#: .\mysite\settings.py:126
+msgid "English"
+msgstr ""
+
 #: .\polls\apps.py:7
 msgid "poll"
 msgstr "ankieta"
@@ -26,38 +42,38 @@ msgstr "ankieta"
 msgid "polls"
 msgstr "ankiety"
 
-#: .\polls\models.py:16
+#: .\polls\models.py:20
 msgid "question text"
 msgstr "treść pytania"
 
-#: .\polls\models.py:17
+#: .\polls\models.py:21
 msgid "publication date"
 msgstr "data publikacji"
 
-#: .\polls\models.py:18
+#: .\polls\models.py:22
 msgid "created"
 msgstr "utworzony"
 
-#: .\polls\models.py:19
+#: .\polls\models.py:23
 msgid "modified"
 msgstr "zmodyfikowany"
 
-#: .\polls\models.py:20
+#: .\polls\models.py:24
 msgid "is active"
 msgstr "aktywny"
 
-#: .\polls\models.py:21
+#: .\polls\models.py:25
 msgid "level"
 msgstr "poziom"
 
-#: .\polls\models.py:22
+#: .\polls\models.py:26
 msgid "image"
 msgstr "obraz"
 
-#: .\polls\models.py:32
+#: .\polls\models.py:41
 msgid "question"
 msgstr "pytanie"
 
-#: .\polls\models.py:33
+#: .\polls\models.py:42
 msgid "questions"
 msgstr "pytania"

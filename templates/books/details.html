@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+<div class="pt-5 pb-3 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+              <p class="card-text" style="font-size:25px;font-style:italic;">"{{book.title}}"</p>
+              <div class="d-flex justify-content-between align-items-start">
+                  <div class="d-flex flex-column align-items-start">
+                      <div class="mb-2">
+                          <span class="text-lead mr-3">Pages:</span>
+                          <small class="badge badge-primary">{{book.pages}}</small>
+                      </div>
+                      <div class="mb-2">
+                          <span class="text-lead mr-3">Rating:</span>
+                          <small class="badge badge-warning">{{book.rating}}</small>
+                      </div>
+                      <div class="mb-2">
+                          <span class="text-lead mr-3">Price:</span>
+                          <small class="badge badge-success">{{book.price}}$</small>
+                          <small class="badge badge-alert" style="text-decoration: line-through;">{{book.price_old}}$</small>
+                      </div>
+                  </div>
+                  <div class="d-flex flex-column align-items-end">
+                      {% if book.authors.all %}
+                          <span class="text-lead">Authors:</span>
+                          {% for author in book.authors.all %}
+                            <small class="text-muted">{{author}}</small>
+                          {% endfor %}
+                      {% else %}
+                        <p>No authors of this book.</p>
+                      {% endif %}
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="d-flex justify-content-between">
+            <span class="d-block text-muted">Publisher: <small class="badge badge-info">{{book.publisher}}</small></span>
+            <small class="d-block text-muted">{{book.pub_date}}</small>
+        </div>
+        <a class="my-4 badge badge-dark" style="display:inline-block;" href="{% url 'books:list' %}">Go back to books list</a>
+
+        <div class="row py-4" style="background-color:white;"></div>
+
+        <div class="row" style="border:1px solid #888;">
+            <div class="col-md-12 py-2 font-weight-bold" style="background-color:#eee;border-bottom:1px solid #888;">
+                Comments:
+            </div>
+            {% for comment in book.comment_set.all %}
+            <div class="comment">
+                <div class="col-md-2 font-italic text-muted">
+                    {{comment.username}}
+                </div>
+                <div class="col-md-10">
+                    {{comment.text}}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="row py-4" style="background-color:white;"></div>
+
+        <div class="row mt-4">
+            <div class="col-12">
+                <form action="{% url 'books:comment' book.id %}" method="POST" class="form" id="form">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                </form>
+                <button class="btn btn-primary" form="form" type="submit">Add comment</button>
+            </div>
+        </div>
+    </div>
+  </div>
+<div>
+</div>
+{% endblock %}

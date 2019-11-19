@@ -22,6 +22,7 @@ class Book(models.Model):
     title = models.CharField(max_length=300)
     pages = models.PositiveIntegerField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
+    price_old = models.DecimalField(max_digits=10, decimal_places=2)
     rating = models.FloatField()
     authors = models.ManyToManyField(Author)
     publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE)
@@ -29,3 +30,9 @@ class Book(models.Model):
 
     def __str__(self):
         return f"{self.title}"
+
+class Comment(models.Model):
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    username = models.CharField(max_length=100)
+    email = models.EmailField()
+    text = models.TextField()

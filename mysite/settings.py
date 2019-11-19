@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # 'polls',
     'polls.apps.PollsConfig',
     'books.apps.BooksConfig',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
