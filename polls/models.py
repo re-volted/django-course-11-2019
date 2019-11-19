@@ -12,6 +12,10 @@ LEVEL_CHOICES = [
     ('hard', 'hard'),
 ]
 
+class PublishedQuestionManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(pub_date__lt=timezone.now())
+
 class Question(models.Model):
     question_text = models.CharField(max_length=250, verbose_name=_("question text"))
     pub_date = models.DateTimeField(verbose_name=_("publication date"))
@@ -27,6 +31,11 @@ class Question(models.Model):
 
     def __str__(self):
         return self.question_text
+
+    # what is later used as "Question.objects" can be changed here
+    # objects = PublishedQuestionManager
+    objects = models.Manager()
+    published = PublishedQuestionManager
 
     class Meta:
         verbose_name =_("question")

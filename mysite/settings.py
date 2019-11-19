@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django_extensions',
     # 'polls',
     'polls.apps.PollsConfig',
+    'books.apps.BooksConfig',
 ]
 
 MIDDLEWARE = [
