@@ -3,5 +3,8 @@
 {% block content %}
 <h1>This is the main page</h1>
 
+{% load static %}
+<img src="{% static 'render3.jpg' %}" alt="Render">
+
 <a href="{% url 'polls:list'%}">Polls list</a>
 {% endblock %}
