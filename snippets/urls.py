@@ -8,8 +8,8 @@ app_name = 'snippets'
 
 urlpatterns = [
     # /snippets/
-    path("", views.snippet_list, name="list"),
-    path("<int:pk>", views.snippet_detail, name="detail"),
+    path("", views.SnippetList.as_view(), name="list"),
+    path("<int:pk>", views.SnippetDetail.as_view(), name="detail"),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
