@@ -10,6 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
+# to be continued from this place
+# https://www.django-rest-framework.org/tutorial/5-relationships-and-hyperlinked-apis/
+
 import os
 
 from django.contrib import messages

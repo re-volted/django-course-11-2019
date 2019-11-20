@@ -29,8 +29,12 @@ urlpatterns = [
     path('books/', include('books.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     # path('login/', LoginView.as_view(), name="login"),
-    path('api/snippets/', include('snippets.urls')),
+    path('api/', include('snippets.urls')),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += [
+    path('api-auth', include('rest_framework.urls')),
+
+]
