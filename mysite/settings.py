@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'books.apps.BooksConfig',
     'infos.apps.InfosConfig',
     'bootstrap4',
+    'rest_framework',
+    'snippets.apps.SnippetsConfig',
 ]
 
 MIDDLEWARE = [
@@ -58,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'infos.middleware.SimpleMiddleware'
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -153,3 +156,16 @@ STATICFILES_DIRS = [
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
+
+CACHES = {
+    "default" : {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "OPTION": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        },
+        "KEY_PREFIX": "Test"
+    }
+}
+
+LOGIN_REDIRECT_URL = "/books/"
