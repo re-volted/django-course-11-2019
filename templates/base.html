@@ -79,7 +79,28 @@
         </div>
       </div>
     </header>
-    <div class="container py-4">
+    <p class="container py-4">
+
+      {% block important %}
+      <p class="alert alert-info">Base message</p>
+      {% endblock %}
+
+      {% block system_message %}
+        {% if system_message %}
+          <p class="alert alert-info text-center">{{system_message.message}}</p>
+        {% endif %}
+      {% endblock %}
+
+      <div class="row">
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <p{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+
     {% block content %}
 
     {% endblock %}

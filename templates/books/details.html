@@ -4,6 +4,9 @@
 {% block content %}
 <div class="pt-5 pb-3 bg-light">
     <div class="container">
+        {% block important %}
+        {{important_message}}
+        {% endblock %}
       <div class="row">
         <div class="col-md-12">
           <div class="card mb-4 shadow-sm">
@@ -48,6 +51,7 @@
 
         <div class="row py-4" style="background-color:white;"></div>
 
+        {% if book.comment_set.all %}
         <div class="row" style="border:1px solid #888;">
             <div class="col-md-12 py-2 font-weight-bold" style="background-color:#eee;border-bottom:1px solid #888;">
                 Comments:
@@ -63,9 +67,10 @@
             </div>
             {% endfor %}
         </div>
+        {% endif %}
 
         <div class="row py-4" style="background-color:white;"></div>
-
+        {{important_message}}
         <div class="row mt-4">
             <div class="col-12">
                 <form action="{% url 'books:comment' book.id %}" method="POST" class="form" id="form">

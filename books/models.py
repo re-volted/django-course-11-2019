@@ -36,3 +36,4 @@ class Comment(models.Model):
     username = models.CharField(max_length=100)
     email = models.EmailField()
     text = models.TextField()
+

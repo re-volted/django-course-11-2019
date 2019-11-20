@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+
+from django.contrib import messages
 from django .utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -32,6 +34,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,6 +45,7 @@ INSTALLED_APPS = [
     # 'polls',
     'polls.apps.PollsConfig',
     'books.apps.BooksConfig',
+    'infos.apps.InfosConfig',
     'bootstrap4',
 ]
 
@@ -71,6 +75,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'books.context_processors.books_context_processor',
+                'infos.context_processors.system_message_context_processor',
             ],
         },
     },
@@ -136,9 +142,14 @@ LOCALE_PATHS = [
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static")
+
 ]
+
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger'
+}

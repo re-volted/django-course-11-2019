@@ -1,6 +1,7 @@
+from django.contrib import messages
 from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 
 # Create your views here.
 from django.urls import reverse
@@ -51,5 +52,8 @@ def book_comment(req, pk):
         book = Book.objects.get(pk=pk)
         comment.book = book
         comment.save()
+        messages.add_message(req, messages.INFO, "A comment was added")
         return HttpResponseRedirect(reverse('books:detail', args=(pk,)))
-    # else TODO
+    else:
+        messages.add_message(req, messages.ERROR, "An error occurred while adding comment.")
+        return HttpResponseRedirect(reverse('books:detail', args=(pk,)))

@@ -26,3 +26,4 @@ class AdminBook(admin.ModelAdmin):
 @admin.register(Publisher)
 class AdminPublisher(admin.ModelAdmin):
     pass
+
